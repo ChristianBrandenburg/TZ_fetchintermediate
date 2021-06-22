@@ -9,77 +9,53 @@
 body {
     margin: 0;
     padding: 0;
-    color: #444;
-    font-family: "Poppins", Poppins;
-
+    background-color:#000a21;
   }
   /*
    * Formatting the header area
    */
   header {
-    background-color: #DFB887;
-    height: 35px;
-    width: 100%;
-    opacity: .9;
-    margin-bottom: 10px;
-  }
-  header h1.logo {
-    margin: 0;
-    font-size: 1.7em;
+    font-family: "Poppins", Poppins;
     color: #fff;
-    text-transform: uppercase;
-    float: left;
+    font-size: 40px;
+    text-align: left;
+    padding: 25px 25px 0px 100px;
   }
-  header h1.logo:hover {
+
+  p {
+    font-family: "Poppins", Poppins;
     color: #fff;
+    font-size: 20px;
+    text-align: left;
+    padding: 0px 25px 0px 100px;
+  }
+  form {
+    text-align: left;
+    width: 80%;
+    border: 2px solid white;
+    border-radius: 0px;
     text-decoration: none;
+    padding: 5px 40px 20px 20px;
+    margin: 5px 100px 50px 100px;
+    box-sizing: border-box;
   }
-  /*
-   * Centering the body content
-   */
-  .container {
-    width: 1200px;
-    margin: 0 auto;
+
+  label {
+    font-family: "Poppins", Poppins;
+    color: #fff;
+    font-size: 20px;
+    text-align: left;
+    padding: 0px 25px 0px 100px;
   }
-  div.home {
-    padding: 10px 0 30px 0;
-    background-color: #E6E6FA;
-    -webkit-border-radius: 6px;
-       -moz-border-radius: 6px;
-            border-radius: 6px;
-  }
-  div.about {
-    padding: 10px 0 30px 0;
-    background-color: #E6E6FA;
-    -webkit-border-radius: 6px;
-       -moz-border-radius: 6px;
-            border-radius: 6px;
-  }
-  h2 {
-    font-size: 3em;
-    margin-top: 40px;
-    text-align: center;
-    letter-spacing: -2px;
-  }
-  h3 {
-    font-size: 1.7em;
-    font-weight: 100;
-    margin-top: 30px;
-    text-align: center;
-    letter-spacing: -1px;
-    color: #999;
-  }
-  .menu {
-    float: right;
-    margin-top: 8px;
-  }
-  .menu li {
-    display: inline;
-  }
-  .menu li + li {
-    margin-left: 35px;
-  }
-  .menu li a {
-    color: #444;
+
+  input {
+    font-family: "Poppins", Poppins;
+    border: none;
     text-decoration: none;
+    background-color:#61dbd2;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    padding: px 25px 5px 25px;
   }
+  
