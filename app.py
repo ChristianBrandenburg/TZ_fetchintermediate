@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request,redirect
 import OpenSSL.crypto
 import requests
  
@@ -12,7 +12,7 @@ def form():
 def data():
     # If the user goes directly to the result page without submitting a cert
     if request.method == 'GET':
-        return f"The URL /data is accessed directly. Try going to '/' to submit form"
+        return redirect('/')
     # Flow when the user submits a cert
     if request.method == 'POST':
 
