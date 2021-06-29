@@ -12,27 +12,28 @@
 
 <h2>TRUSTZONE Intermediate Fetcher.</h2>
 
-<div id="column1">
+<div class="container">
+<div class ="floatLeft">
 <form action="/submit/" method="post">
-    <label for="text">Put your certificate here:</label>
-    <br>
     <textarea id="text" name="text" rows="12" cols="50">{{form_data}}</textarea>
     <br/>
     <input type="submit" value="Submit">
 </form>
-</div>
-<label for="text">testing</label>
-<div id="column2">
-
-</div>
-
 
 <form>
-    <label for="text">Intermediate certificate:</label>
-    <br>
     <textarea id="result" name="text" rows="12" cols="50">{{intermediate}}</textarea >
-    <br/>
 </form>
+</div>
+
+<div class ="floatRight">
+<label for="text">2Intermediate certificate:</label>
+<br>
+<label for="text">3Intermediate certificate:</label>
+<br>
+
+</div>
+
+</div>
 
 </body>
 </html> 

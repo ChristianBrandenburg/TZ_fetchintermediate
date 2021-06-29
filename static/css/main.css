@@ -30,6 +30,7 @@ body {
     text-align: center;
     padding: 0px 25px 0px 100px;
   }
+
   form {
     text-align: center;
     width: auto;
@@ -40,6 +41,10 @@ body {
     box-sizing: border-box;
   }
 
+  .floatLeft { width: 50%; float: left; }
+  .floatRight {width: 50%; float: right; }
+  .container { overflow: hidden; }
+  
   textarea {
     text-align: left;
     min-width: 535px;
@@ -53,8 +58,8 @@ body {
     font-family: "Poppins", Poppins;
     color: #fff;
     font-size: 20px;
-    text-align: center;
-    padding: 0px 25px 25px 100px;
+    text-align: left;
+    padding: 25px 25px 25px 200px;
   }
 
 
