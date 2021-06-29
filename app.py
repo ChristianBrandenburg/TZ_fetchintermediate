@@ -37,10 +37,9 @@ def data():
         opencert = open('intermediate.crt', "rb").read()
         dercert = OpenSSL.crypto.load_certificate(OpenSSL.crypto.FILETYPE_ASN1,opencert)
         certdump2 = OpenSSL.crypto.dump_certificate(OpenSSL.crypto.FILETYPE_PEM, dercert)
-        
-        
+               
         attrlist2 = certdump2.decode()
         print(certdump2)
-        return render_template('form.html',output = form_data, intermediate = certdump2)
+        return render_template('form.html',output = form_data, intermediate = attrlist2)
 
 app.run(host='localhost', port=5000)
