@@ -41,6 +41,6 @@ def data():
         
         attrlist2 = certdump2.decode()
         print(certdump2)
-        return render_template('data.html',output = form_data, intermediate = certdump2)
+        return render_template('form.html',output = form_data, intermediate = certdump2)
 
 app.run(host='localhost', port=5000)

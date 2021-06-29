@@ -18,26 +18,35 @@ body {
     font-family: "Poppins", Poppins;
     color: #fff;
     font-size: 40px;
-    text-align: left;
+    text-align: center;
     padding: 25px 25px 0px 100px;
+    border-bottom: thick double
   }
 
   p {
     font-family: "Poppins", Poppins;
     color: #fff;
     font-size: 20px;
-    text-align: left;
+    text-align: center;
     padding: 0px 25px 0px 100px;
   }
   form {
-    text-align: left;
-    width: 80%;
-    border: 2px solid white;
+    text-align: center;
+    width: auto;
     border-radius: 0px;
     text-decoration: none;
-    padding: 5px 40px 20px 20px;
+    padding: 20px 20px 20px 20px;
     margin: 5px 100px 50px 100px;
     box-sizing: border-box;
+  }
+
+  textarea {
+    text-align: left;
+    min-width: 535px;
+    height: auto;
+    min-height: 555px;
+    text-decoration: none;
+    padding: 5px 5px 5px 5px;
   }
 
   label {
@@ -45,7 +54,7 @@ body {
     color: #fff;
     font-size: 20px;
     text-align: left;
-    padding: 0px 25px 0px 100px;
+    padding: 0px 25px 25px 100px;
   }
 
   input {
@@ -56,6 +65,6 @@ body {
     color: #fff;
     font-size: 20px;
     text-align: center;
-    padding: px 25px 5px 25px;
+    padding: 0px 25px 5px 25px;
   }
   
