@@ -14,7 +14,7 @@ body {
   /*
    * Formatting the header area
    */
-  header {
+  h1 {
     font-family: "Poppins", Poppins;
     color: #fff;
     font-size: 40px;
@@ -23,7 +23,7 @@ body {
     border-bottom: thick double
   }
 
-  p {
+  h2 {
     font-family: "Poppins", Poppins;
     color: #fff;
     font-size: 20px;
@@ -53,9 +53,10 @@ body {
     font-family: "Poppins", Poppins;
     color: #fff;
     font-size: 20px;
-    text-align: left;
+    text-align: center;
     padding: 0px 25px 25px 100px;
   }
+
 
   input {
     font-family: "Poppins", Poppins;

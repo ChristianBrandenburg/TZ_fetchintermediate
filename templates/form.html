@@ -8,17 +8,24 @@
 </head>
 <body>
 
-<header>TZ Fetcher</header>
+<h1>TZ Fetcher</h1>
 
-<p>TRUSTZONE Intermediate Fetcher.</p>
+<h2>TRUSTZONE Intermediate Fetcher.</h2>
 
-<form action="/data/" method="post">
+<div id="column1">
+<form action="/submit/" method="post">
     <label for="text">Put your certificate here:</label>
     <br>
-    <textarea id="text" name="text" rows="12" cols="50"></textarea>
+    <textarea id="text" name="text" rows="12" cols="50">{{form_data}}</textarea>
     <br/>
     <input type="submit" value="Submit">
 </form>
+</div>
+<label for="text">testing</label>
+<div id="column2">
+
+</div>
+
 
 <form>
     <label for="text">Intermediate certificate:</label>

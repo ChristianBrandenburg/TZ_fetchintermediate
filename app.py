@@ -8,9 +8,9 @@ app = Flask(__name__)
 def form():
     return render_template('form.html')
  
-@app.route('/data/', methods = ['POST', 'GET'])
+@app.route('/submit/', methods = ['POST', 'GET'])
 def data():
-    # If the user goes directly to the result page without submitting a cert
+    # If the user goes directly to the submit page without submitting a cert
     if request.method == 'GET':
         return redirect('/')
     # Flow when the user submits a cert
@@ -21,25 +21,30 @@ def data():
         cert = form_data.get('text')
 
         #Load the cert in as PEM and dump attributes 
-        pemcert = OpenSSL.crypto.load_certificate(OpenSSL.crypto.FILETYPE_PEM,cert)
-        certdump = OpenSSL.crypto.dump_certificate(OpenSSL.crypto.FILETYPE_TEXT, pemcert)
-        attrlist = certdump.decode()
+        try:
+            pemcert = OpenSSL.crypto.load_certificate(OpenSSL.crypto.FILETYPE_PEM,cert)
+            certdump = OpenSSL.crypto.dump_certificate(OpenSSL.crypto.FILETYPE_TEXT, pemcert)
+            attrlist = certdump.decode()
 
-        #Strip all attributes except the AIA URL
-        for item in attrlist.split("\n"):
-            if "Issuers" in item:
-                aialine = item.strip()
-        aiaurl = aialine[17:]
+            #Strip all attributes except the AIA URL
+            for item in attrlist.split("\n"):
+                if "Issuers" in item:
+                    aialine = item.strip()
+            aiaurl = aialine[17:]
 
-        #Go to the AIA URL, get intermediate and dump it as PEM
-        r = requests.get(aiaurl)
-        open('intermediate.crt', 'wb').write(r.content)
-        opencert = open('intermediate.crt', "rb").read()
-        dercert = OpenSSL.crypto.load_certificate(OpenSSL.crypto.FILETYPE_ASN1,opencert)
-        certdump2 = OpenSSL.crypto.dump_certificate(OpenSSL.crypto.FILETYPE_PEM, dercert)
-               
-        attrlist2 = certdump2.decode()
-        print(certdump2)
-        return render_template('form.html',output = form_data, intermediate = attrlist2)
+            #Go to the AIA URL, get intermediate and dump it as PEM
+            r = requests.get(aiaurl)
+            open('intermediate.crt', 'wb').write(r.content)
+            imcert = open('intermediate.crt', "rb").read()
+            dercert = OpenSSL.crypto.load_certificate(OpenSSL.crypto.FILETYPE_ASN1,imcert)
+            imcertdump = OpenSSL.crypto.dump_certificate(OpenSSL.crypto.FILETYPE_PEM, dercert)
+                
+            imoutput = imcertdump.decode()
+
+        except:
+            cert = "Error not a valid certificate"
+            imoutput = ""
+
+        return render_template('form.html',form_data = cert, intermediate = imoutput)
 
 app.run(host='localhost', port=5000)
