@@ -47,4 +47,4 @@ def data():
 
         return render_template('form.html',form_data = cert, intermediate = imoutput)
 
-app.run(host='localhost', port=5000)
+app.run(host='https://tzintermediate.azurewebsites.net', port=443)
