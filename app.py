@@ -47,4 +47,4 @@ def data():
 
         return render_template('form.html',form_data = cert, intermediate = imoutput)
 
-app.run(host='localhost', port=80)
+#app.run(host='localhost', port=80)
