@@ -41,9 +41,18 @@ body {
     box-sizing: border-box;
   }
 
-  .floatLeft { width: 50%; float: left; }
-  .floatRight {width: 50%; float: right; }
-  .container { overflow: hidden; }
+  .column {
+    float:left;
+    width: 33.33%;
+    padding: 20px 20px 20px 20px;
+    margin: 5px 100px 50px 100px;
+  }
+
+  .row:after {
+    content:"";
+    display: table;
+    clear: both;
+  }
   
   textarea {
     text-align: left;
