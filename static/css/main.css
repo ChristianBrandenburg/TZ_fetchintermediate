@@ -36,24 +36,26 @@ body {
     width: auto;
     border-radius: 0px;
     text-decoration: none;
-    padding: 20px 20px 20px 20px;
     margin: 5px 100px 50px 100px;
     box-sizing: border-box;
   }
 
-  .column {
-    float:left;
-    width: 33.33%;
-    padding: 20px 20px 20px 20px;
-    margin: 5px 100px 50px 100px;
+  section {
+    border: 1px solid blue;
+    display: block;
+
   }
 
-  .row:after {
-    content:"";
-    display: table;
-    clear: both;
+  .myDiv {
+    float: right;
   }
   
+  p {
+    float: none;
+    color: #fff;
+    font-size: 25px;
+  }
+
   textarea {
     text-align: left;
     min-width: 535px;
@@ -68,7 +70,7 @@ body {
     color: #fff;
     font-size: 20px;
     text-align: left;
-    padding: 25px 25px 25px 200px;
+    padding: 25px 25px 25px 20px;
   }
 
 
