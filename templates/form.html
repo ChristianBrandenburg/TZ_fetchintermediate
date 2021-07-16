@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <link rel="stylesheet" href="../static/css/main.css">
 <title>TZ Fetcher</title>
+
 </head>
 <body>
 
@@ -12,29 +13,25 @@
 
 <h2>TRUSTZONE Intermediate Fetcher.</h2>
 
-<div class="container">
-<div class ="floatLeft">
-<form action="/submit/" method="post">
-    <textarea id="text" name="text" rows="12" cols="50">{{form_data}}</textarea>
-    <br/>
-    <input type="submit" value="Submit">
-</form>
+<div class="row">
 
-<form>
-    <textarea id="result" name="text" rows="12" cols="50">{{intermediate}}</textarea >
-</form>
-</div>
+    <div class="column">
+        <form action="/submit/" method="post">
+            <textarea id="text" name="text">{{form_data}}</textarea>
+            <br/>
+            <input type="submit" value="Submit">
+        </form>
+        <form>
+            <textarea id="result" name="text">{{intermediate}}</textarea >
+        </form>
+    </div>
 
-<div class ="floatRight">
-<br>
-<label for="text">2Intermediate certificate:</label>
-<br>
-<label for="text">3Intermediate certificate:</label>
-<br>
-
-</div>
-
-</div>
+    <div class="column">
+        <label for="text">4Intermediate certificate:</label>
+        <br>
+        <label for="text">5Intermediate certificate:</label>
+        <br>
+    </div>
 
 </body>
 </html> 
