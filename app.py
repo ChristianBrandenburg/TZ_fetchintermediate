@@ -35,8 +35,20 @@ def data():
                     aialine = item.strip()
                 if"Subject:" in item:
                     subjline = item.strip()
+                if"Not Before:" in item:
+                    startline = item.strip()
+                if"Not After :" in item:
+                    endline = item.strip()
+                if"DNS:" in item:
+                    sanline = item.strip()
+
             aiaurl = aialine[17:]
-            
+            startline = startline[11:]
+            endline = endline[11:]
+
+            #For dev
+            print(sanline)
+
             #Go to the AIA URL, get intermediate and dump it as PEM
             r = requests.get(aiaurl)
             open('intermediate.crt', 'wb').write(r.content)
@@ -53,6 +65,7 @@ def data():
             cert = "Error not a valid certificate"
             imoutput = ""
 
-        return render_template('form.html',form_data = cert, intermediate = imoutput, certsubj = subjline)
+        return render_template('form.html',
+        form_data = cert, intermediate = imoutput, certsubj = subjline, certstart = startline, certend = endline)
 
 app.run(host='localhost', port=5000)

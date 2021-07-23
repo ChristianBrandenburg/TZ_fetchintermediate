@@ -10,26 +10,37 @@
 <body>
 
 <h1>TZ Fetcher</h1>
-
 <h2>TRUSTZONE Intermediate Fetcher.</h2>
 
-
 <form id="cert input" form-id action="/submit/" method="post">
-
     <textarea id="text" name="text">{{form_data}}</textarea>
     <div>
-        <p>{{certcn}}</p>
+        <p>
+        Common Name
         <br>
-        <p>{{certsubj}}</p>
+        {{certcn}}
         <br>
-        <p>{{certsan}}</p>
         <br>
-        <p>{{certstart}}</p>
+        Subject
         <br>
-        <p>{{certend}}</p>
+        {{certsubj}}
         <br>
+        <br>
+        SANs
+        <br>
+        {{certsan}}
+        <br>
+        <br>
+        Validity Start
+        <br>
+        {{certstart}}
+        <br>
+        <br>
+        Validity End
+        <br>
+        {{certend}}
+        </p>
     </div>
-
 </form>
 
 <br>
@@ -38,17 +49,12 @@
 
 <form class="intermediate input"> 
     <textarea id="result" name="text">{{intermediate}}</textarea >
-
     <div>
         <br>
         <p>{{intmorg}}</p>
-        <br>
         <p>{{intcn}}</p>
-        <br>
         <p>{{intmsubj}}</p>
-        <br>
         <p>{{intmstart}}</p>
-        <br>
         <p>{{intmend}}</p>
         <br>
     </div>    
