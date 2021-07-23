@@ -26,12 +26,17 @@ def data():
             certdump = OpenSSL.crypto.dump_certificate(OpenSSL.crypto.FILETYPE_TEXT, pemcert)
             attrlist = certdump.decode()
 
+            #For dev 
+            print(attrlist)
+
             #Strip all attributes except the AIA URL
             for item in attrlist.split("\n"):
                 if "Issuers" in item:
                     aialine = item.strip()
+                if"Subject:" in item:
+                    subjline = item.strip()
             aiaurl = aialine[17:]
-
+            
             #Go to the AIA URL, get intermediate and dump it as PEM
             r = requests.get(aiaurl)
             open('intermediate.crt', 'wb').write(r.content)
@@ -41,10 +46,13 @@ def data():
                 
             imoutput = imcertdump.decode()
 
+            #For dev
+            print(imoutput)
+
         except:
             cert = "Error not a valid certificate"
             imoutput = ""
 
-        return render_template('form.html',form_data = cert, intermediate = imoutput)
+        return render_template('form.html',form_data = cert, intermediate = imoutput, certsubj = subjline)
 
 app.run(host='localhost', port=5000)

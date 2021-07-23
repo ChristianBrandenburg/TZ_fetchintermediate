@@ -9,55 +9,36 @@
 body {
     background-color:#000a21;
     font-family: "Poppins", Poppins;
+    text-align: center;
   }
 
   h1 {
     color: #fff;
     font-size: 40px;
-    text-align: center;
-    padding: 25px 25px 0px 100px;
+    padding: 25px 25px 0px 50px;
     border-bottom: thick double
   }
 
   h2 {
     color: #fff;
     font-size: 20px;
-    text-align: center;
-    padding: 0px 25px 0px 100px;
+    padding: 0px 25px 0px 50px;
   }
 
-  div.settings {
-    display:grid;
-    grid-template-columns: max-content max-content;
-    grid-gap:5px;
+  p {
+    color: #fff;
+    font-size: 16px;
+    padding: 1em;
+    width:250px
   }
-  div.settings label       { text-align:right; }
-  div.settings label:after { content: ":"; }
 
   form {
-    width: auto;
-    border-radius: 0px;
-    text-decoration: none;
-    margin: 5px 100px 50px 100px;
-    box-sizing: border-box;
-  }
+    display: inline-flex;
+    text-align: right;
+    padding: 10px 100px 10px 200px;
 
-  section {
-    border: 1px solid blue;
-    display: block;
-
-  }
-
-  .myDiv {
-    float: right;
   }
   
-  p {
-    float: none;
-    color: #fff;
-    font-size: 25px;
-  }
-
   textarea {
     min-width: 535px;
     height: auto;
@@ -66,11 +47,8 @@ body {
     padding: 5px 5px 5px 5px;
   }
 
-  label {
-    color: #fff;
-    font-size: 20px;
-    text-align: left;
-    padding: 25px 25px 25px 20px;
+  div {
+    border: solid #ffffff 3px;
   }
 
   input {
@@ -80,6 +58,6 @@ body {
     color: #fff;
     font-size: 20px;
     text-align: center;
-    padding: 0px 25px 5px 25px;
+    padding: 5px 25px 5px 25px;
   }
   
