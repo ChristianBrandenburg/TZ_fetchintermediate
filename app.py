@@ -27,7 +27,7 @@ def data():
             attrlist = certdump.decode()
 
             #For dev 
-            print(attrlist)
+            #print(attrlist)
 
             #Strip all attributes except the AIA URL
             for item in attrlist.split("\n"):
@@ -47,7 +47,7 @@ def data():
             endline = endline[11:]
 
             #For dev
-            print(sanline)
+            #print(sanline)
 
             #Go to the AIA URL, get intermediate and dump it as PEM
             r = requests.get(aiaurl)
@@ -58,8 +58,10 @@ def data():
                 
             imoutput = imcertdump.decode()
 
+            imcertdump = OpenSSL.crypto.dump_certificate(OpenSSL.crypto.FILETYPE_TEXT, dercert)
+            imcertdump = imcertdump.decode()
             #For dev
-            print(imoutput)
+            #print(imcertdump)
 
         except:
             cert = "Error not a valid certificate"
