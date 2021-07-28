@@ -22,15 +22,15 @@ def data():
 
         #Load the cert in as PEM and dump attributes 
         try:
-            pemcert = OpenSSL.crypto.load_certificate(OpenSSL.crypto.FILETYPE_PEM,cert)
-            certdump = OpenSSL.crypto.dump_certificate(OpenSSL.crypto.FILETYPE_TEXT, pemcert)
-            attrlist = certdump.decode()
+            certload = OpenSSL.crypto.load_certificate(OpenSSL.crypto.FILETYPE_PEM,cert)
+            certdump = OpenSSL.crypto.dump_certificate(OpenSSL.crypto.FILETYPE_TEXT, certload)
+            certdecode = certdump.decode()
 
             #For dev 
             #print(attrlist)
 
             #Strip all attributes except the AIA URL
-            for item in attrlist.split("\n"):
+            for item in certdecode.split("\n"):
                 if "Issuers" in item:
                     aialine = item.strip()
                 if"Subject:" in item:
@@ -42,6 +42,9 @@ def data():
                 if"DNS:" in item:
                     sanline = item.strip()
 
+            cnindex = subjline.index("CN=")
+            certcn = subjline[cnindex+3:]
+
             aiaurl = aialine[17:]
             startline = startline[11:]
             endline = endline[11:]
@@ -50,24 +53,44 @@ def data():
             #print(sanline)
 
             #Go to the AIA URL, get intermediate and dump it as PEM
-            r = requests.get(aiaurl)
-            open('intermediate.crt', 'wb').write(r.content)
+            imcertdownload = requests.get(aiaurl)
+            open('intermediate.crt', 'wb').write(imcertdownload.content)
             imcert = open('intermediate.crt', "rb").read()
-            dercert = OpenSSL.crypto.load_certificate(OpenSSL.crypto.FILETYPE_ASN1,imcert)
-            imcertdump = OpenSSL.crypto.dump_certificate(OpenSSL.crypto.FILETYPE_PEM, dercert)
-                
-            imoutput = imcertdump.decode()
+            loadimcert = OpenSSL.crypto.load_certificate(OpenSSL.crypto.FILETYPE_ASN1,imcert)
+            imcertdump = OpenSSL.crypto.dump_certificate(OpenSSL.crypto.FILETYPE_PEM, loadimcert)
+            intermediate = imcertdump.decode()
 
-            imcertdump = OpenSSL.crypto.dump_certificate(OpenSSL.crypto.FILETYPE_TEXT, dercert)
-            imcertdump = imcertdump.decode()
-            #For dev
-            #print(imcertdump)
+            imcerttxtdump = OpenSSL.crypto.dump_certificate(OpenSSL.crypto.FILETYPE_TEXT, loadimcert)
+            imcertdecode = imcerttxtdump.decode()
 
+            print(imcertdecode)
+
+            for item in imcertdecode.split("\n"):
+                if"Subject:" in item:
+                    imsubjline = item.strip()
+                if"Not Before:" in item:
+                    imstartline = item.strip()[11:]
+                if"Not After :" in item:
+                    imendline = item.strip()[11:]
+            
+            for item in imsubjline.split(","):
+                if "O=" in item:
+                    imorg = item[3:]
+                if "CN=" in item:
+                    imcn = item[4:]
+
+        # If user post anything but a cert
         except:
             cert = "Error not a valid certificate"
-            imoutput = ""
+            intermediate = ""
 
         return render_template('form.html',
-        form_data = cert, intermediate = imoutput, certsubj = subjline, certstart = startline, certend = endline)
+        #Input cert and intermediate
+        form_data = cert, intermediate = intermediate,
+        #Certificate variables
+        certcn = certcn, certsubj = subjline, certstart = startline, certend = endline, certsan = sanline,
+        #Intermediate variables
+        imorg = imorg, imcn = imcn, imstart = imstartline, imend = imendline
+        )
 
 app.run(host='localhost', port=5000)
