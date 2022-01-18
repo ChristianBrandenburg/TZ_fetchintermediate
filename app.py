@@ -79,7 +79,7 @@ def data():
                 if "CN=" in item:
                     imcn = item[4:]
 
-        # If user post anything but a cert
+        # If user posts anything but a cert
         except:
             cert = "Error not a valid certificate"
             intermediate = ""
